@@ -6,9 +6,9 @@ workflows:
   elastic-beanstalk-workflow:
     jobs:
       - node/test:
-          app-dir: ~/projects/backend
+          app-dir: ~/project/backend
       - eb/deploy:
-          app-dir: ~/projects/backend
+          app-dir: ~/project/backend
           context: aws-creds
           application-name: AT-EB-Deploy
           environment-name: Atebdeploy-env
