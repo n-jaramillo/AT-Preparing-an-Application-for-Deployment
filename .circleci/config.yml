@@ -6,11 +6,11 @@ workflows:
   elastic-beanstalk-workflow:
     jobs:
       - node/test:
-          app-dir: ~/backend
+          app-dir: ~/projects/backend
           version: '15.1'
           pkg-manager: npm
       - eb/deploy:
-          app-dir: ~/backend
+          app-dir: ~/projects/backend
           context: aws-creds
           application-name: AT-EB-Deploy
           environment-name: Atebdeploy-env
