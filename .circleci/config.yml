@@ -7,8 +7,6 @@ workflows:
     jobs:
       - node/test:
           app-dir: ~/projects/backend
-          version: '15.1'
-          pkg-manager: npm
       - eb/deploy:
           app-dir: ~/projects/backend
           context: aws-creds
