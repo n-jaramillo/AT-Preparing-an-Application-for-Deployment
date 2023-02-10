@@ -1,0 +1,23 @@
+version: 2.1
+orbs:
+  eb: circleci/aws-elastic-beanstalk@2.0.1
+  node: circleci/node@5.1.0
+workflows:
+  elastic-beanstalk-workflow:
+    jobs:
+      - node/test:
+          app-dir: ~/projects/backend
+          version: '15.1'
+          pkg-manager: npm
+      - eb/deploy:
+          app-dir: ~/projects/backend
+          context: aws-creds
+          application-name: AT-EB-Deploy
+          environment-name: Atebdeploy-env
+          filters:
+            branches:
+              only:
+                - main
+          label: version-<<pipeline.number>>
+          requires:
+            - node/test
